@@ -1,0 +1,42 @@
+﻿@model stajproje2.Models.Musteri
+@{
+    ViewBag.Title = "MusteriEkle";
+}
+<br />
+<br />
+<br />
+<h2>Musteri Ekle</h2>
+<hr />
+<form class="form-group" method="post">
+
+    <div>
+        @Html.AntiForgeryToken()
+        <label>Musteri Adı</label>
+        <input type="text" name="m_ad" class="form-control" />
+        @Html.ValidationMessageFor(model => model.m_ad, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Musteri tel</label>
+        <input type="text" name="m_tel" class="form-control" />
+        @Html.ValidationMessageFor(model => model.m_tel, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Musteri Mail</label>
+        <input type="text" name="m_mail" class="form-control" />
+        @Html.ValidationMessageFor(model => model.m_mail, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Musteri Sirket</label>
+        <input type="text" name="m_sirket" class="form-control" />
+        @Html.ValidationMessageFor(model => model.m_sirket, "", new { @class = "text-danger" })
+    </div>
+
+
+    <div>
+        <button class="btn btn-info">Musteri Ekle</button>
+        <a href="/Adimn/Musteri" class="btn btn-outline-dark">Geri Don</a>
+    </div>
+
+
+</form>
+

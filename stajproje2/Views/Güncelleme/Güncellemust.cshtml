@@ -1,0 +1,44 @@
+﻿@model stajproje2.Models.Musteri
+@{
+    ViewBag.Title = "Musterigetir";
+}
+
+<h2>Musterigetir</h2>
+@using (Html.BeginForm("Güncellemust", "Güncelleme", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="from-group">
+        <label>Musteri Id</label>
+        @Html.TextBoxFor(m => m.m_id, new { @class = "form-control" })
+
+        <hr />
+        <label>Musteri Ad</label>
+        @Html.TextBoxFor(m => m.m_ad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.m_ad, "", new { @class = "text-danger" })
+
+        <hr />
+        <label>Musteri Tel</label>
+        @Html.TextBoxFor(m => m.m_tel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.m_tel, "", new { @class = "text-danger" })
+
+
+
+        <hr />
+        <label>Musteri Mail</label>
+        @Html.TextBoxFor(m => m.m_mail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.m_mail, "", new { @class = "text-danger" })
+        <hr />
+
+        <label>Musteri Sirjet</label>
+        @Html.TextBoxFor(m => m.m_sirket, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.m_sirket, "", new { @class = "text-danger" })
+        <hr />
+
+    </div>
+
+    <div>
+
+        <button class="btn btn-primary">Güncelle</button>
+        <a href="/Adimn/Musteri/" class="btn btn-primary" style="margin-left:10px">Geri Don</a>
+    </div>
+}

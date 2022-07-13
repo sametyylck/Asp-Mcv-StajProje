@@ -1,0 +1,43 @@
+﻿
+@model stajproje2.Models.Ziyaretler
+@{
+    ViewBag.Title = "ata";
+}
+
+
+<form class="form-group" method="post">
+    @Html.AntiForgeryToken()
+    <h2>Ziyaret Ata</h2>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <input type="hidden" name="z_resimm" />
+    <input type="hidden" name="z_not" />
+    <label>Ziyaret Ismi</label>
+
+    <input type="text" name="z_ismi" class="form-control" />
+
+    <label>Personel Seç</label>
+    @Html.DropDownList("z_user_id", null, "", htmlAttributes: new { @class = "form-control mr-2 mt-2", })
+    @Html.ValidationMessageFor(message => message.z_user_id, "", new { @class = "text-danger" })
+
+
+    <br />
+    <label>Sube Secin</label>
+    @Html.DropDownList("sube_fk_id", null, "", htmlAttributes: new { @class = "form-control mr-2 mt-2", })
+    @Html.ValidationMessageFor(message => message.sube_fk_id, "", new { @class = "text-danger" })
+    <br />
+
+    <br />
+    <label>Tarih Giriniz</label>
+    <input type="datetime-local" placeholder="2022-06-20" name="z_tarih" class="form-control" />
+    @Html.ValidationMessageFor(message => message.z_tarih, "", new { @class = "text-danger" })
+
+
+    <button class="btn btn-info">Kaydet</button>
+    <a href="/Adimn/Ziyaret/" class="btn btn-primary" style="margin-left:10px">>Geri Don</a>
+</form>
+

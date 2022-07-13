@@ -1,0 +1,103 @@
+﻿@using stajproje2.Models
+@using PagedList;
+@using PagedList.Mvc;
+@model List<stajproje2.Models.Musteri>
+@{
+    ViewBag.Title = "Musteri";
+}
+
+@using (Html.BeginForm())
+{
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <h2>Müsteri Listesi</h2>
+
+    <div class="container">
+
+        @using(Html.BeginForm())
+                {
+            <div style="width:25%;float:left">
+                @Html.TextBox("ara", null, new { @class = "form-control" });
+            </div>
+            <div style="float:left">
+
+                @Html.ActionLink("Ara", "Musteri", null, new { @class = "btn btn-info", onclick = "$(this).parents('form').attr('action', $(this).attr('href'));$(this).parents('form').submit();return false;" })
+            </div>
+                }
+    </div>
+    <hr />
+    <table id="musteri" style="font-size:14px;" class="display table table-bordered" style="width:100%">
+        <thead>
+            <tr style="font-size:14px;">
+                <th scope="col">Musteri Id </th>
+                <th scope="col">Musteri ad </th>
+                <th scope="col">Musteri tel </th>
+                <th scope="col">Musteri mail </th>
+                <th scope="col">Musteri Sirketi</th>
+                <th scope="col">Sil</th>
+                <th scope="col">Güncelle</th>
+
+            </tr>
+        </thead>
+
+        @foreach (var must in Model)
+        {
+           
+                <tr style="font-size:14px;">
+
+                    <td>@must.m_id</td>
+                    <td>@must.m_ad</td>
+                    <td>@must.m_tel</td>
+                    <td>@must.m_mail</td>
+                    <td>@must.m_sirket</td>
+                    <td><a href="/Sil/Silmust/@must.m_id" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Güncelleme/Güncellemust/@must.m_id" class="btn btn-primary">Güncelle</a></td>
+
+
+                </tr>
+      
+
+        }
+    </table>
+
+}
+<script>
+    $('#tablo').dataTable({
+        "paging": true,
+        "searching": false,
+        language: {
+            info: "_TOTAL_ kayıttan _START_ - _END_ kayıt gösteriliyor.",
+            infoEmpty: "Gösterilecek hiç kayıt yok.",
+            loadingRecords: "Kayıtlar yükleniyor.",
+            lengthMenu: "Sayfada _MENU_ kayıt göster",
+            zeroRecords: "Tablo boş",
+            search: "Arama:",
+            infoFiltered: "(toplam _MAX_ kayıttan filtrelenenler)",
+            buttons: {
+                copyTitle: "Panoya kopyalandı.",
+                copySuccess: "Panoya %d satır kopyalandı",
+                copy: "Kopyala",
+                print: "Yazdır",
+            },
+
+
+        }
+
+
+    });
+
+
+
+
+</script>
+
+
+
+
+
+
+

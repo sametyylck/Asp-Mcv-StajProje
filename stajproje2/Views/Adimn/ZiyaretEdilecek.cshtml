@@ -1,0 +1,126 @@
+﻿@using stajproje2.Models
+@using PagedList;
+@using PagedList.Mvc;
+@model List<stajproje2.Models.Ziyaretler>
+@{
+    ViewBag.Title = "ZiyaretOnaylanan";
+}
+
+<h2>ZiyaretOnaylanan</h2>
+<br />
+<br />
+<br />
+@if (User.IsInRole("Admin"))
+{
+    <a href="/Adimn/ZiyaretOnaylanan" style="width: 250px;font-size:16px; " class="btn btn-success">Ziyaret Onaylananlar</a>
+    <a href="/Adimn/ZiyaretOnayBekle" style="width: 250px;font-size:16px; " class="btn btn-warning">Ziyaret Onay Bekleniyor</a>
+    <a href="/Adimn/ZiyaretRed" style="width: 250px;font-size:16px; " class="btn btn-danger">Ziyaret Red Edilen</a>
+    <a href="/Adimn/ZiyaretEdilecek" style="width: 250px;font-size:16px; " class="btn btn-primary">Ziyaret Edilecek</a>
+    <a href="/Adimn/ZiyaretGuncellenecek" style="width: 250px;font-size:16px; " class="btn btn-info">Ziyaret Güncellenen</a>
+}
+<br />
+<br />
+<link href="~/day/css/StyleSheet1.css" rel="stylesheet" type="text/css" />
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        <div style="width:25%;float:left">
+            @Html.TextBox("ara", null, new { @class = "form-control" });
+        </div>
+        <div style="float:left">
+
+            @Html.ActionLink("Ara", "ZiyaretEdilecek", null, new { @style = "height:35px;", @class = "btn btn-info", onclick = "$(this).parents('form').attr('action', $(this).attr('href'));$(this).parents('form').submit();return false;" })
+        </div>
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <table id="tablo" style="font-size:14px;" class="table table-bordered">
+        <thead>
+            <tr style="font-size:14px;">
+                <th>Ziyaret Id </th>
+                <th>Ziyaret Ismi</th>
+                <th>Ziyaret not  </th>
+                <th>Ziyaret resim </th>
+                <th>Ziyaret OLusturma Tarihi</th>
+                <th>Ziyaret tarih </th>
+                <th>Personel İsim </th>
+                <th>Şube Adı</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+                <th>Durum</th>
+                <th>Son İslem Tarihi</th>
+            </tr>
+        </thead>
+        @foreach (var ziy in Model)
+        {
+            if (ziy.z_olay_id == 5)
+            {
+
+
+
+                <tr style="font-size:14px;">
+
+                    <td>@ziy.z_id</td>
+                    <td>@ziy.z_ismi</td>
+                    <td>@ziy.z_not</td>
+                    <td><a href="@ziy.z_resimm" target="_blank"> <img src="@ziy.z_resimm" class="buyutec" style="width:90px"></a> </td>
+                    <td>@ziy.z_olusturma</td>
+                    <td>@ziy.z_tarih</td>
+                    <td>@ziy.Kullanıcı.k_isim</td>
+                    <td>@ziy.Subeler.sube_ad</td>
+                    <td><a href="/Sil/Silziya/@ziy.z_id" class="btn btn-primary">Sil</a></td>
+
+                    <td><a href="/Güncelleme/ZiyaretIslemleri/@ziy.z_id" class="btn btn-primary">Guncelle</a></td>
+
+                    <td>@ziy.Olay.olay_durum></td>
+                    <td>@ziy.z_islem_tarihi</td>
+
+
+                </tr>
+
+
+            }
+        }
+    </table>
+
+}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tablo').dataTable({
+        "paging": true,
+        "searching": false,
+        language: {
+            info: "_TOTAL_ kayıttan _START_ - _END_ kayıt gösteriliyor.",
+            infoEmpty: "Gösterilecek hiç kayıt yok.",
+            loadingRecords: "Kayıtlar yükleniyor.",
+            lengthMenu: "Sayfada _MENU_ kayıt göster",
+            zeroRecords: "Tablo boş",
+            search: "Arama:",
+            infoFiltered: "(toplam _MAX_ kayıttan filtrelenenler)",
+            buttons: {
+                copyTitle: "Panoya kopyalandı.",
+                copySuccess: "Panoya %d satır kopyalandı",
+                copy: "Kopyala",
+                print: "Yazdır",
+            },
+
+
+        }
+
+
+    });
+
+
+
+</script>

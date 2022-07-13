@@ -1,0 +1,52 @@
+﻿
+@model stajproje2.Models.Satıs
+@{
+    ViewBag.Title = "Satis";
+}
+<br />
+<br />
+<br />
+<h2>Fatura Kesimi</h2>
+<hr />
+
+
+<form class="form-group" method="post">
+
+    @Html.AntiForgeryToken()
+
+    <label>Ürün Adı</label>
+    <input type="text" name="sat_urun" class="form-control" />
+    @Html.ValidationMessageFor(mes => mes.sat_urun, "", new { @class = "text-danger" })
+    <br />
+
+
+    <label>Ürün Adet</label>
+    <input type="text" name="sat_adet" class="form-control" />
+    @Html.ValidationMessageFor(mes => mes.sat_adet, "", new { @class = "text-danger" })
+    <br />
+
+
+    <label>Ürün Fiyat</label>
+    <input type="text" name="sat_fiyat" class="form-control" />
+    @Html.ValidationMessageFor(model => model.sat_fiyat, "", new { @class = "text-danger" })
+    <br />
+
+
+    <label>Musteri İsmi </label>
+    @Html.DropDownList("m_fk_id", null, "", htmlAttributes: new { @class = "form-control", })
+    @Html.ValidationMessageFor(Model => Model.m_fk_id, "", new { @class = "text-danger" })
+    <br />
+
+    <label>Personel İsmi</label>
+    @Html.DropDownList("user_id", null, "", htmlAttributes: new { @class = "form-control", })
+    @Html.ValidationMessageFor(model => model.user_id, "", new { @class = "text-danger" })
+    <br />
+
+    <label>Para Birimi Secib</label>
+    @Html.DropDownListFor(x => x.doviz_id, (List<SelectListItem>)ViewBag.satıs, new { @class = "form-control", @name = "doviz_id" })
+
+
+    <button type="submit" class="btn btn-info">Kaydet</button>
+    <a href="/Adimn/Satıs/" class="btn btn-primary" style="margin-left:10px">Geri Don</a>
+
+</form>

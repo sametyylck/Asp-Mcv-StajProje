@@ -1,0 +1,55 @@
+﻿@model stajproje2.Models.Satıs
+@{
+    ViewBag.Title = "Detay";
+}
+
+<h2>Detaygetir</h2>
+
+@using (Html.BeginForm("Detaygetir", "Güncelleme", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="from-group">
+
+        <label>Satıs Id</label>
+        <input type="text" value="@Model.sat_id" disabled="disabled" class="form-control" name="sat_id" />
+        <hr />
+        <label>Satılan Urun</label>
+        @Html.TextBoxFor(sat => sat.sat_urun, new { @class = "form-control" })
+        <br />
+        <label>Satılan Adet</label>
+        @Html.TextBoxFor(sat => sat.sat_adet, new { @class = "form-control" })
+        <br />
+
+        <label>Satılan Fiyat</label>
+        @Html.TextBoxFor(sat => sat.sat_fiyat, new { @class = "form-control" })
+        <br />
+
+        <label>Personel İsmi</label>
+        @Html.TextAreaFor(sat => sat.Kullanıcı.k_isim, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.user_id, "", new { @class = "text-danger" })
+
+
+        <label>Musteri İsmi </label>
+        @Html.TextAreaFor(sat => sat.Musteri.m_ad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(Model => Model.m_fk_id, "", new { @class = "text-danger" })
+
+        <br />
+
+
+        <label>Toplam Fiyat</label>
+
+        @{
+            int toplam = Convert.ToInt32(Model.sat_adet) * Convert.ToInt32(Model.sat_fiyat);
+        }
+
+        <input type="text" class="form-control" value="@toplam" />
+
+        <br />
+
+    </div>
+    <br />
+    <div>
+
+        <a href="/Adimn/Satıs" class="btn btn-info">Geri Dön</a>
+    </div>
+}

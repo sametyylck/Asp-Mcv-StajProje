@@ -1,0 +1,36 @@
+﻿@model stajproje2.Models.Ziyaretler
+@{
+    ViewBag.Title = "Guncelle";
+
+
+}
+
+@using (Html.BeginForm("Guncelle", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="z_id" value="@ViewBag.z_id" />
+
+    <h2>Guncelle</h2>
+    <br />
+    <label>Sube Secin</label>
+    @Html.DropDownList("sube_fk_id", null, "", htmlAttributes: new { @class = "form-control mr-2 mt-2", })
+    @Html.ValidationMessageFor(message => message.sube_fk_id, "", new { @class = "text-danger" })
+    <br />
+    <label>Ziyaret Notu</label>
+    @Html.TextAreaFor(m => m.z_not, new { @class = "form-control mr-2 mt-2", })
+
+
+    <label>Resim Ekle</label>
+    <input type="file" name="görsel" class="form-control" />
+    @Html.ValidationMessageFor(message => message.z_resimm, "", new { @class = "text-danger" })
+    <br />
+
+    <input type="submit" class="btn btn-info" value="kaydet" id="selam" />
+    <a href="/Adimn/Ziyaret/" class="btn btn-primary" style="margin-left:10px">Geri Don</a>
+
+
+
+
+
+
+}

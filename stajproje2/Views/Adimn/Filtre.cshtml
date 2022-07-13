@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+ }
+@model stajproje2.Models.Ziyaretler
+
+<form class="form-group" method="post" action="/Adimn/FiltreList">
+    <div style="margin-left: 4px; float: left; font-size: 16px;">
+        <label>Personel Seç</label>
+        @Html.DropDownListFor(x => x.z_user_id, (List<SelectListItem>)ViewBag.ktgr, "Hepsi", new { @name = "z_user_id" })
+    </div>
+
+    <div style="margin-left:4px;float:left;font-size:16px;">
+        <label>Sube Secin</label>
+        @Html.DropDownListFor(x => x.sube_fk_id, (List<SelectListItem>)ViewBag.sube, "Hepsi", new { @name = "sube_fk_id" })
+    </div>
+    <div style="margin-left: 4px; float: left; font-size: 16px;">
+        <label>Durum Seciniz</label>
+        @Html.DropDownListFor(x => x.z_olay_id, (List<SelectListItem>)ViewBag.olay, "Hepsi", new { @name = "z_olay_id" })
+    </div>
+    <label style="font-size: 15px;">Oluştuma Tarihi</label>
+    <input type="date" style="font-size: 15px;" name="z_olusturma" />
+    <label style="font-size: 15px;">Ziyaret Tarihi</label>
+    <input type="date" style="font-size: 15px;" name="z_tarih" />
+    <input type="submit" style="font-size: 15px;" value="Ara" name="Ara" />
+
+</form>

@@ -1,0 +1,28 @@
+﻿@model stajproje2.Models.Kullanıcı
+@{
+    Layout = null;
+}
+
+
+
+<link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="~/day/css/animate.css">
+<div class="login-box">
+    <h2>Giris</h2>
+
+    @using (Html.BeginForm("Login", "Giris", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="user-box">
+            <input type="text" name="k_username" required="">
+            <label>Kullanıcı Adı</label>
+        </div>
+        <div class="user-box">
+            <input type="password" name="k_password" required="">
+            <label>Parola</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Giris</button>
+
+    }
+    <a href="/Giris/SifreReset" class="btn btn-c">Şifremi Unuttum</a>
+</div>

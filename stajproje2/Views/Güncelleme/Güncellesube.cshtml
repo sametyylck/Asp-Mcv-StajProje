@@ -1,0 +1,41 @@
+﻿@model stajproje2.Models.Subeler
+@{
+    ViewBag.Title = "Subegetir";
+}
+
+<h2>Subegetir</h2>
+@using (Html.BeginForm("Güncellesube", "Güncelleme", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="from-group">
+        <label>Sube Id</label>
+        @Html.TextBoxFor(sub => sub.sube_id, new { @class = "form-control" })
+        @Html.ValidationMessageFor(message => message.sube_id, "", new { @class = "text-danger" })
+        <hr />
+        <label>Sube Ad</label>
+        @Html.TextBoxFor(sub => sub.sube_ad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(message => message.sube_ad, "", new { @class = "text-danger" })
+        <hr />
+        <label>Sube İl</label>
+        @Html.TextBoxFor(sub => sub.sube_il, new { @class = "form-control" })
+        @Html.ValidationMessageFor(message => message.sube_il, "", new { @class = "text-danger" })
+        <hr />
+        <label>Sube Tel</label>
+        @Html.TextBoxFor(sub => sub.sube_tel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(message => message.sube_tel, "", new { @class = "text-danger" })
+        <hr />
+        <label>Sube Adres</label>
+        @Html.TextBoxFor(sub => sub.sube_adres, new { @class = "form-control" })
+        @Html.ValidationMessageFor(message => message.sube_adres, "", new { @class = "text-danger" })
+        <hr />
+
+
+
+    </div>
+
+    <div>
+
+        <button class="btn btn-primary">Güncelle</button>
+        <a href="/Adimn/Sube/" class="btn btn-primary" style="margin-left:10px">Geri Don</a>
+    </div>
+}

@@ -1,0 +1,43 @@
+﻿@model stajproje2.Models.Subeler
+@{
+    ViewBag.Title = "SubeEkle";
+}
+<br />
+<br />
+<br />
+<h2>SubeEkle</h2>
+<hr />
+<form class="form-group" method="post">
+
+    <div>
+        @Html.AntiForgeryToken()
+
+
+        <label>Sube Adı</label>
+        <input type="text" name="sube_ad" class="form-control" />
+        @Html.ValidationMessageFor(messa => messa.sube_ad, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Sube İl</label>
+        <input type="text" name="sube_il" class="form-control" />
+        @Html.ValidationMessageFor(messa => messa.sube_il, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Sube tel </label>
+        <input type="text" name="sube_tel" class="form-control" />
+        @Html.ValidationMessageFor(messa => messa.sube_tel, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Sube adres</label>
+        <input type="text" name="sube_adres" class="form-control" />
+        @Html.ValidationMessageFor(messa => messa.sube_adres, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        <button class="btn btn-info">Sube Ekle</button>
+        <a href="/Adimn/Sube" class="btn btn-outline-primary">Geri Don</a>
+    </div>
+
+
+</form>
+

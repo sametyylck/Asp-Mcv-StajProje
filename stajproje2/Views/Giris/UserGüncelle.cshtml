@@ -1,0 +1,54 @@
+﻿@model stajproje2.Models.Kullanıcı
+@{
+    ViewBag.Title = "UserGüncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("UserGüncelle", "Giris", FormMethod.Post))
+{
+    <br />
+    <br />
+    <div class="form-group">
+        <div>
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <label>User Name</label>
+            <input type="text" name="k_username" value="@Model.k_username" class="form-control" />
+
+        </div>
+
+        <div>
+            <label>Sifre</label>
+            <input type="password" name="k_password" value="@Model.k_password" class="form-control" />
+
+        </div>
+
+
+        <div>
+            <label>Personel İsim ve Soyisim</label>
+            <input type="text" name="k_isim" value="@Model.k_isim" class="form-control" />
+
+        </div>
+
+        <div>
+            <label>Personel tel</label>
+            <input type="text" name="k_tel" value="@Model.k_tel" class="form-control" />
+
+        </div>
+        <div>
+            <label>Personel Mail</label>
+            <input type="text" name="k_mail" value="@Model.k_mail" class="form-control" />
+
+        </div>
+    </div>
+
+        <div>
+            <button class="btn btn-info">Guncelle</button>
+            <a href="/Adimn/Ziyaret" class="btn btn-outline-dark">Geri Don</a>
+
+        </div>
+}
+

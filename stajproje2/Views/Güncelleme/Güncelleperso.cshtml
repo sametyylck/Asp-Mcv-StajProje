@@ -1,0 +1,45 @@
+﻿@model stajproje2.Models.Kullanıcı
+@{
+    ViewBag.Title = "Personelgetir";
+}
+
+<h2>Personelgetir</h2>
+@using (Html.BeginForm("Güncelleperso", "Güncelleme", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div class="from-group">
+
+    <input type="hidden" name="k_username" value="@Model.k_username" />
+    <input type="hidden" name="k_password" value="@Model.k_password" />
+
+    <label>Personel Id</label>
+    @Html.TextBoxFor(p => p.k_id, new { @class = "form-control" })
+    @Html.ValidationMessageFor(message => message.k_id, "", new { @disabled = "true", @class = "text-danger" })
+    <hr />
+    <label>Personel İsim Soyisim</label>
+    @Html.TextBoxFor(p => p.k_isim, new { @class = "form-control" })
+    @Html.ValidationMessageFor(message => message.k_isim, "", new { @class = "text-danger" })
+    <hr />
+    <label>Personel Tel</label>
+    @Html.TextBoxFor(p => p.k_tel, new { @class = "form-control" })
+    @Html.ValidationMessageFor(message => message.k_tel, "", new { @class = "text-danger" })
+    <hr />
+    <label>Personel Mail</label>
+    @Html.TextBoxFor(p => p.k_mail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(message => message.k_mail, "", new { @class = "text-danger" })
+    
+    <hr />
+    <label>Personel Baslangıc</label>
+    @Html.TextBoxFor(p => p.k_baslangıc, new { @class = "form-control" })
+    @Html.ValidationMessageFor(message => message.k_baslangıc, "", new { @class = "text-danger" })
+
+
+</div>
+<label>@ViewBag.uyarı</label>
+
+    <div>
+
+        <button class="btn btn-primary">Güncelle</button>
+        <a href="/Adimn/Index" class="btn btn-primary">Geri Dön</a>
+    </div>
+}

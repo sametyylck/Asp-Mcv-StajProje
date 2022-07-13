@@ -1,0 +1,39 @@
+﻿@model stajproje2.Models.Ziyaretler
+@{
+    ViewBag.Title = "ZiyaretIslemleri";
+}
+
+<h2>ZiyaretIslemleri</h2>
+<form class="form-group" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="z_id" value="@Model.z_id" />
+
+    <label>Personel Seç</label>
+    @Html.DropDownListFor(x => x.z_user_id, (List<SelectListItem>)ViewBag.ktgr, new { @class = "form-control", @name = "z_user_id" })
+    @Html.ValidationMessageFor(message => message.z_user_id, "", new { @class = "text-danger" })
+
+
+    <br />
+    <label>Sube Secin</label>
+    @Html.DropDownListFor(x => x.sube_fk_id, (List<SelectListItem>)ViewBag.sube, new { @class = "form-control", @name = "sube_fk_id" })
+    @Html.ValidationMessageFor(message => message.sube_fk_id, "", new { @class = "text-danger" })
+    <br />
+
+    <label>Yapılacak İslem</label>
+    @Html.DropDownListFor(x => x.z_olay_id, (List<SelectListItem>)ViewBag.olay, new { @class = "form-control", @name = "z_olay_id" })
+    @Html.ValidationMessageFor(message => message.z_olay_id, "", new { @class = "text-danger" })
+    <br />
+    <label>Atanmış Tarih</label>
+    @Html.TextBoxFor(x => x.z_tarih, new { @class = "form-control mr-2 mt-2", });
+
+    <br />
+    <label>Tarih Giriniz</label>
+    <input type="datetime-local" name="z_tarihgüncel" class="form-control" />
+    @Html.ValidationMessageFor(message => message.z_tarihgüncel, "", new { @class = "text-danger" })
+
+
+    <button class="btn btn-info">Kaydet</button>
+    <a href="/Adimn/Ziyaret/" class="btn btn-primary" style="margin-left:10px">>Geri Don</a>
+</form>
+

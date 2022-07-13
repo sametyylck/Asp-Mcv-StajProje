@@ -1,0 +1,56 @@
+﻿@model stajproje2.Models.Kullanıcı
+@{
+    ViewBag.Title = "PersonelEkle";
+}
+<br />
+<br />
+<br />
+<h2>Personel Ekle</h2>
+<form class="form-group" method="post">
+    <label style="color:red;">@ViewBag.uyar</label>
+    <div>
+        @Html.AntiForgeryToken()
+        <label>User Name</label>
+        <input type="text" name="k_username" class="form-control" />
+        <label style="color:red;">@ViewBag.uyarı</label>
+        @Html.ValidationMessageFor(message => message.k_username, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        <label>Sifre</label>
+        <input type="password" name="k_password" class="form-control" />
+        @Html.ValidationMessageFor(message => message.k_password, "", new { @class = "text-danger" })
+    </div>
+
+
+    <div>
+        <label>Personel İsim ve Soyisim</label>
+        <input type="text" name="k_isim" class="form-control" />
+        @Html.ValidationMessageFor(message => message.k_isim, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        <label>Personel tel</label>
+        <input type="text" name="k_tel" class="form-control" />
+        @Html.ValidationMessageFor(message => message.k_tel, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label>Personel Mail</label>
+        <input type="text" name="k_mail" class="form-control" />
+        @Html.ValidationMessageFor(message => message.k_mail, "", new { @class = "text-danger" })
+        <label style="color:red;">@ViewBag.uyarıı</label>
+    </div>
+
+    <div>
+        <label>Personel Baslama Tarihi</label>
+        <input type="date" name="k_baslangıc" class="form-control" />
+        @Html.ValidationMessageFor(message => message.k_baslangıc, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <button class="btn btn-info">Personel Ekle</button>
+        <a href="/Adimn/Index" class="btn btn-outline-dark">Geri Don</a>
+    </div>
+    
+
+
+</form>
