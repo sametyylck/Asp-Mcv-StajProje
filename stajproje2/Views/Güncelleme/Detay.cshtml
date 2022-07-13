@@ -10,10 +10,7 @@
     @Html.AntiForgeryToken()
     <div class="from-group">
 
-        <label>Satıs Id</label>
-        <input type="text" value="@Model.sat_id" disabled="disabled" class="form-control" name="sat_id" />
-        <hr />
-        <label>Satılan Urun</label>
+       
         @Html.TextBoxFor(sat => sat.sat_urun, new { @class = "form-control" })
         <br />
         <label>Satılan Adet</label>
